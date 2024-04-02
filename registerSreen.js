@@ -50,21 +50,21 @@ export default function RegisterScreen() {
         <TextInput
         style={styles.input}
         value={email}
-        placeholder='fullname'
+        placeholder='email'
         onChangeText={text=>setEmail(text)}
         />
-        <Text>Full Name:</Text>
+        <Text>D.O.B</Text>
         <TextInput
         style={styles.input}
-        value={fullName}
-        placeholder='fullname'
+        value={dateOfBirth}
+        placeholder='D.O.B'
         onChangeText={text=>setFullName(text)}
         />
-        <Text>Full Name:</Text>
+        <Text>Place of Birth</Text>
         <TextInput
         style={styles.input}
-        value={fullName}
-        placeholder='fullname'
+        value={placeOfBirth}
+        placeholder='Place of Birth'
         onChangeText={text=>setFullName(text)}
         />
         <Button title="Register" onPress={handleRegistration} />
@@ -82,6 +82,6 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     padding: 10,
     marginBottom: 10,
-    width: '100%',
+    width: 250,
   }
 });
