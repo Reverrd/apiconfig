@@ -1,7 +1,7 @@
 import axios from "axios";
 import { createContext, useState } from "react";
 // import { BASE_URL } from "./config";
-import { BASE_URL } from "../apiconfig/config";
+import { BASE_URL } from "./config";
 
 export const AuthContext = createContext()
 export const AuthProvider =({children})=>{
