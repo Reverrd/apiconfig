@@ -42,9 +42,12 @@ export const AuthProvider =({children})=>{
         axios.get(`${TRANS_URL}/currencies`)
         .then(
             res=>{
-                
+                const currencies = res.data;
+                console.log(`Transaction Currencies is ${currencies}`)
             }
-        )
+        ).catch(err =>{
+            console.error(`Error fetching transaction currencies`)
+        })
     }
     return(
     <AuthContext.Provider value={{register, userInfo, login}}>
