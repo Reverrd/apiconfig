@@ -1,5 +1,5 @@
 
-import { StyleSheet, Text, TextInput, View } from 'react-native';
+import { StyleSheet, Text, TextInput, View, Button } from 'react-native';
 import { useContext, useState } from 'react';
 import { AuthContext } from '../apiconfig/AuthContext';
 export default function RegisterScreen() {
@@ -22,7 +22,7 @@ export default function RegisterScreen() {
   };
 
   return (
-    <View style={styles.container}>
+    <View>
       
       <View>
         <Text>Full Name:</Text>
@@ -69,7 +69,7 @@ export default function RegisterScreen() {
         />
         <Button title="Register" onPress={handleRegistration} />
       </View>
-      <StatusBar style="auto" />
+      {/* <StatusBar style="auto" /> */}
     </View>
   );
 }
