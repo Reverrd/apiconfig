@@ -46,9 +46,21 @@ export const AuthProvider =({children})=>{
                 console.log(`Transaction Currencies is ${currencies}`)
             }
         ).catch(err =>{
-            console.error(`Error fetching transaction currencies`)
+            console.log(`Error fetching transaction currencies and this is the error; ${err}`)
         })
     }
+    const createInvestment = (walletAddress,investmentType,stockOrCrypto,amount)=>{
+        axios.post(`${TRANS_URL}/create-investment`, {
+            walletAddress,investmentType,stockOrCrypto,amount
+        })
+        .then(
+            res=>{
+
+            }
+        )
+    }
+
+
     return(
     <AuthContext.Provider value={{register, userInfo, login, transactionCurrencies}}>
         {children}
