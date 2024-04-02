@@ -1,7 +1,7 @@
 import axios from "axios";
 import { createContext, useState } from "react";
 // import { BASE_URL } from "./config";
-import { BASE_URL } from "./config";
+import { BASE_URL, TRANS_URL } from "./config";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
 export const AuthContext = createContext()
@@ -38,7 +38,14 @@ export const AuthProvider =({children})=>{
             }
         )
     }
-
+    const transactionCurrencies = ()=>{
+        axios.get(`${TRANS_URL}/currencies`)
+        .then(
+            res=>{
+                
+            }
+        )
+    }
     return(
     <AuthContext.Provider value={{register, userInfo, login}}>
         {children}
