@@ -2,6 +2,7 @@ import axios from "axios";
 import { createContext, useState } from "react";
 // import { BASE_URL } from "./config";
 import { BASE_URL } from "./config";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 export const AuthContext = createContext()
 export const AuthProvider =({children})=>{
@@ -21,9 +22,25 @@ export const AuthProvider =({children})=>{
             setIsLoading(false)
         })
     }
+    const login = (clientId, clientSecret) => {
+
+        axios.post(`${BASE_URL}/login`,{
+            clientId, clientSecret
+        }).then(
+            res=>{
+                let userInfo = res.data
+                setUserInfo(userInfo)
+                AsyncStorage.setItem('userInfo', JSON.stringify(userInfo))
+            }
+        ).catch(
+            e=>{
+                console.log(`login error ${e}`)
+            }
+        )
+    }
 
     return(
-    <AuthContext.Provider value={{register}}>
+    <AuthContext.Provider value={{register, userInfo}}>
         {children}
     </AuthContext.Provider>
     )
