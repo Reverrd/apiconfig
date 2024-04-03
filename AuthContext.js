@@ -63,9 +63,9 @@ export const AuthProvider =({children})=>{
         )
     }
 
-    // Your existing code...
+    
 
-// Define a function to test registration
+// Testing create-account api call
 const testRegistration = () => {
     const sample = {
         fullname: "Promise Obioma",
