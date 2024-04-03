@@ -41,7 +41,7 @@ export const AuthProvider =({children})=>{
             }
         )
     }
-    const transactionCurrencies =async ()=>{
+    const transactionCurrencies = ()=>{
         axios.get('https://stock-api.coretechzone.com/api/transaction/currencies')
         .then(
             res=>{
