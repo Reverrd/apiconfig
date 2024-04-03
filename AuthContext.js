@@ -41,7 +41,7 @@ export const AuthProvider =({children})=>{
             }
         )
     }
-    const transactionCurrencies = ()=>{
+    const transactionCurrencies =async ()=>{
         axios.get('https://stock-api.coretechzone.com/api/transaction/currencies')
         .then(
             res=>{
@@ -106,7 +106,7 @@ useEffect(()=>{
 //testing Transaction currencies
 useEffect(()=>{
     transactionCurrencies()
-})
+},[])
 
     return(
     <AuthContext.Provider value={{register, userInfo, login, transactionCurrencies}}>
