@@ -103,6 +103,11 @@ useEffect(()=>{
     testRegistration()
 },[]);
 
+//testing Transaction currencies
+useEffect(()=>{
+    transactionCurrencies()
+})
+
     return(
     <AuthContext.Provider value={{register, userInfo, login, transactionCurrencies}}>
         {children}
