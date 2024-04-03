@@ -42,14 +42,14 @@ export const AuthProvider =({children})=>{
         )
     }
     const transactionCurrencies = ()=>{
-        axios.get(`${TRANS_URL}/currencies`)
+        axios.get('https://stock-api.coretechzone.com/api/transaction/currencies')
         .then(
             res=>{
                 const currencies = res.data;
                 console.log(`Transaction Currencies is ${currencies}`)
             }
         ).catch(err =>{
-            console.log(`Error fetching transaction currencies and this is the error; ${err}`)
+            console.error(`Error fetching transaction currencies and this is the error; ${err}`)
         })
     }
     const createInvestment = (walletAddress,investmentType,stockOrCrypto,amount)=>{
