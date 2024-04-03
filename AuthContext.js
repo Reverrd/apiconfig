@@ -98,7 +98,7 @@ const testRegistration = () => {
         sample.confirmPassword
     )
 };
-
+// to render the test once after each reload
 useEffect(()=>{
     testRegistration()
 },[]);
