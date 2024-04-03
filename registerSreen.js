@@ -58,14 +58,35 @@ export default function RegisterScreen() {
         style={styles.input}
         value={dateOfBirth}
         placeholder='D.O.B'
-        onChangeText={text=>setFullName(text)}
+        onChangeText={text=>setDateOfBirth(text)}
         />
         <Text>Place of Birth</Text>
         <TextInput
         style={styles.input}
         value={placeOfBirth}
         placeholder='Place of Birth'
-        onChangeText={text=>setFullName(text)}
+        onChangeText={text=>setPlaceOfBirth(text)}
+        />
+        <Text>achievement</Text>
+        <TextInput
+        style={styles.input}
+        value={achievement}
+        placeholder='Achievement'
+        onChangeText={text=>setAchievement(text)}
+        />
+        <Text>investmentExperience</Text>
+        <TextInput
+        style={styles.input}
+        value={investmentExperience}
+        placeholder='investment'
+        onChangeText={text=>setInvestmentExperience(text)}
+        />
+        <Text>occupation</Text>
+        <TextInput
+        style={styles.input}
+        value={placeOfBirth}
+        placeholder='Place of Birth'
+        onChangeText={text=>setPlaceOfBirth(text)}
         />
         <Button title="Register" onPress={handleRegistration} />
       </View>

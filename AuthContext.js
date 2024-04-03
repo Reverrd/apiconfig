@@ -1,5 +1,5 @@
 import axios from "axios";
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 // import { BASE_URL } from "./config";
 import { BASE_URL, TRANS_URL } from "./config";
 import AsyncStorage from "@react-native-async-storage/async-storage";
@@ -10,18 +10,21 @@ export const AuthProvider =({children})=>{
     const [isLoading, setIsLoading] = useState(false);
     const register = (fullname, username, phoneNumber, email, dateOfBirth, placeOfBirth, achievement, investmentExperience, occupation, walletAddress, password, confirmPassword)=>{
         setIsLoading(true)
-        axios.post(`${BASE_URL}/create-account`, {
+        axios.post('https://stock-api.coretechzone.com/api/accounts/create-account', {
             fullname, username, phoneNumber, email, dateOfBirth, placeOfBirth, achievement, investmentExperience, occupation, walletAddress, password, confirmPassword
-        }).then(res =>{
+        }
+        ).then(res =>{
             let userInfo = res.data;
             setUserInfo(userInfo)
+            console.log("User registered successfully:", userInfo)
             
             console.log(userInfo)
-        }).catch(e=>{
-            console.log(`register error ${e}`)
+        }).catch(error=>{
+            console.error('cannot connect to server', error)
             setIsLoading(false)
         })
     }
+    
     const login = (clientId, clientSecret) => {
 
         axios.post(`${BASE_URL}/login`,{
@@ -60,6 +63,45 @@ export const AuthProvider =({children})=>{
         )
     }
 
+    // Your existing code...
+
+// Define a function to test registration
+const testRegistration = () => {
+    const sample = {
+        fullname: "Promise Obioma",
+        username: "reverd123",
+        phoneNumber: '08151956899',
+        email: 'proekene17@gmail.com',
+        dateOfBirth: '28th/03/1998',
+        placeOfBirth: "Lagos",
+        achievement: "expert",
+        investmentExperience: '2years',
+        occupation: "developer",
+        walletAddress: "dlskd7",
+        password: "password123",
+        confirmPassword: "password123"
+    };
+    
+    // Call the register function with sample data
+    register(
+        sample.fullname, 
+        sample.username, 
+        sample.phoneNumber, 
+        sample.email, 
+        sample.dateOfBirth, 
+        sample.placeOfBirth, 
+        sample.achievement, 
+        sample.investmentExperience, 
+        sample.occupation, 
+        sample.walletAddress, 
+        sample.password, 
+        sample.confirmPassword
+    )
+};
+
+useEffect(()=>{
+    testRegistration()
+},[]);
 
     return(
     <AuthContext.Provider value={{register, userInfo, login, transactionCurrencies}}>
